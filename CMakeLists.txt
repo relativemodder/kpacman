@@ -33,22 +33,36 @@ ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
+macro(make_relative_paths IN_LIST OUT_LIST BASE_DIR)
+  set(${OUT_LIST})
+
+  string(REGEX REPLACE "([^/])$" "\\1/" REPLACE_PREFIX ${BASE_DIR})
+
+  foreach(ABS_PATH IN LISTS ${IN_LIST})
+    string(REPLACE "${REPLACE_PREFIX}" "" REL_PATH ${ABS_PATH})
+    list(APPEND ${OUT_LIST} ${REL_PATH})
+  endforeach()
+endmacro()
+
+
 qt_add_executable(appKpacman
     src/main.cpp
 )
 
+file(GLOB_RECURSE PROJ_SRC src/*.cpp)
+file(GLOB_RECURSE PROJ_H include/*.h)
+file(GLOB_RECURSE PROJ_QML qml/*.qml)
+
+make_relative_paths(PROJ_SRC PROJ_SRC_REL ${CMAKE_CURRENT_SOURCE_DIR})
+make_relative_paths(PROJ_H PROJ_H_REL ${CMAKE_CURRENT_SOURCE_DIR})
+make_relative_paths(PROJ_QML PROJ_QML_REL ${CMAKE_CURRENT_SOURCE_DIR})
+
 qt_add_qml_module(appKpacman
     URI Kpacman
     VERSION 1.0
-    QML_FILES qml/Main.qml
-    QML_FILES qml/Icon.qml
-    QML_FILES qml/DownloadPage.qml
-    QML_FILES qml/RemovePage.qml
-    QML_FILES qml/UpdatePage.qml
-    QML_FILES qml/SettingsPage.qml
-    QML_FILES qml/AboutDialog.qml
-    SOURCES include/IconProvider.h
-    SOURCES src/IconProvider.cpp
+    QML_FILES ${PROJ_QML_REL}
+    SOURCES ${PROJ_H_REL}
+    SOURCES ${PROJ_SRC_REL}
     RESOURCES README.md
     RESOURCES LICENSE
 )
