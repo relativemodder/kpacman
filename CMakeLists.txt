@@ -34,21 +34,23 @@ ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(appKpacman
-    main.cpp
+    src/main.cpp
 )
 
 qt_add_qml_module(appKpacman
     URI Kpacman
     VERSION 1.0
     QML_FILES
-        Main.qml
-        Icon.qml
-        DownloadPage.qml
-        RemovePage.qml
-        UpdatePage.qml
-        SettingsPage.qml
-    SOURCES IconProvider.h IconProvider.cpp
-    QML_FILES AboutDialog.qml
+        qml/Main.qml
+        qml/Icon.qml
+        qml/DownloadPage.qml
+        qml/RemovePage.qml
+        qml/UpdatePage.qml
+        qml/SettingsPage.qml
+        qml/AboutDialog.qml
+    SOURCES
+        include/IconProvider.h
+        src/IconProvider.cpp
     RESOURCES README.md
     RESOURCES LICENSE
 )
@@ -57,6 +59,8 @@ target_link_libraries(appKpacman
     PRIVATE Qt6::Quick Qt6::QuickControls2
 )
 target_link_libraries(appKpacman PRIVATE Qt6::Core Qt6::Widgets Qt6::Gui)
+
+target_include_directories(appKpacman PUBLIC include/)
 
 include(GNUInstallDirs)
 install(TARGETS appKpacman
