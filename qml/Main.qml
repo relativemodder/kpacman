@@ -5,8 +5,8 @@ import QtQuick.Window
 
 ApplicationWindow {
     id: mainWindow
-    width: 1366
-    height: 768
+    width: 1200
+    height: 700
     visible: true
     title: qsTr("Download Software - KPacman")
 
@@ -32,7 +32,7 @@ ApplicationWindow {
 
         Rectangle {
             id: sidePanel
-            Layout.preferredWidth: 280
+            Layout.preferredWidth: 250
             Layout.fillHeight: true
             color: palette.window
             z: 1
