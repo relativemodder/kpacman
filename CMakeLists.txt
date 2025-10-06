@@ -50,6 +50,7 @@ qt_add_qml_module(appKpacman
     SOURCES IconProvider.h IconProvider.cpp
     QML_FILES AboutDialog.qml
     RESOURCES README.md
+    RESOURCES LICENSE
 )
 
 target_link_libraries(appKpacman
