@@ -7,16 +7,16 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    QIcon appIcon = QIcon::fromTheme(QStringLiteral("plasmadiscover"));
+    QIcon appIcon = QIcon::fromTheme("plasmadiscover");
 
     if (!appIcon.isNull()) {
         app.setWindowIcon(appIcon);
     }
 
-    QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
+    QQuickStyle::setStyle("org.kde.desktop");
 
     QQmlApplicationEngine engine;
-    engine.addImageProvider(QStringLiteral("icon"), new IconProvider());
+    engine.addImageProvider("icon", new IconProvider());
 
     QObject::connect(
         &engine,

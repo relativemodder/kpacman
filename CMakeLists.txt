@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 
 project(Kpacman VERSION 0.1 LANGUAGES CXX)
 
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(ECM 6.0.0 REQUIRED NO_MODULE)
@@ -9,7 +10,6 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
-# include(KDECompilerSettings NO_POLICY_SCOPE)
 include(ECMFindQmlModule)
 include(ECMQmlModule)
 
@@ -49,6 +49,7 @@ qt_add_qml_module(appKpacman
         SettingsPage.qml
     SOURCES IconProvider.h IconProvider.cpp
     QML_FILES AboutDialog.qml
+    RESOURCES README.md
 )
 
 target_link_libraries(appKpacman
