@@ -7,6 +7,8 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+    app.setDesktopFileName(APP_ID);
+
     QIcon appIcon = QIcon::fromTheme("plasmadiscover");
 
     if (!appIcon.isNull()) {

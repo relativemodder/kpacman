@@ -105,7 +105,7 @@ ApplicationWindow {
                                     source: "image://icon/" + model.iconName
                                     sourceSize.width: 22
                                     sourceSize.height: 22
-                                    Layout.leftMargin: 10
+                                    Layout.leftMargin: 5
                                 }
 
                                 Text {
@@ -175,7 +175,7 @@ ApplicationWindow {
                             source: "image://icon/help-about"
                             sourceSize.width: 22
                             sourceSize.height: 22
-                            Layout.leftMargin: 10
+                            Layout.leftMargin: 5
                         }
 
                         Text {
