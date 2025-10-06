@@ -40,17 +40,15 @@ qt_add_executable(appKpacman
 qt_add_qml_module(appKpacman
     URI Kpacman
     VERSION 1.0
-    QML_FILES
-        qml/Main.qml
-        qml/Icon.qml
-        qml/DownloadPage.qml
-        qml/RemovePage.qml
-        qml/UpdatePage.qml
-        qml/SettingsPage.qml
-        qml/AboutDialog.qml
-    SOURCES
-        include/IconProvider.h
-        src/IconProvider.cpp
+    QML_FILES qml/Main.qml
+    QML_FILES qml/Icon.qml
+    QML_FILES qml/DownloadPage.qml
+    QML_FILES qml/RemovePage.qml
+    QML_FILES qml/UpdatePage.qml
+    QML_FILES qml/SettingsPage.qml
+    QML_FILES qml/AboutDialog.qml
+    SOURCES include/IconProvider.h
+    SOURCES src/IconProvider.cpp
     RESOURCES README.md
     RESOURCES LICENSE
 )
