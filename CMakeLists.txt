@@ -82,3 +82,4 @@ install(TARGETS appKpacman
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+add_subdirectory(kpacmand)

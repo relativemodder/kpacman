@@ -39,7 +39,7 @@ Rectangle {
             ListElement {
                 titleText: "Inkscape"
                 descriptionText: "Vector graphics editor for creating illustrations, diagrams, and logos"
-                iconSource: "image://icon/inkscape_org.inkscape.Inkscape.png"
+                iconSource: "file:///usr/share/swcatalog/icons/archlinux-arch-extra/128x128/inkscape_org.inkscape.Inkscape.png"
             }
             ListElement {
                 titleText: "Steam"
