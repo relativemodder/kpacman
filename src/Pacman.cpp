@@ -39,8 +39,6 @@ void Pacman::loadAllPackages() {
     QStringList pacmanOutput = stdout.split("\n");
 
     for (int line = 0; line < pacmanOutput.length() - 2; line += 2) {
-        PacmanPackageFromList *package = new PacmanPackageFromList();
-
         QStringList mainInfoLine = pacmanOutput[line].split(" ");
         QString description = pacmanOutput[line + 1].trimmed();
 
@@ -49,15 +47,18 @@ void Pacman::loadAllPackages() {
             line -= 1;
             continue;
         }
+        PacmanPackageFromList *package = new PacmanPackageFromList();
+
         package->origin = originAndName[0];
         package->name = originAndName[1];
         package->version = mainInfoLine[1];
-        package->installed = pacmanOutput[line].contains("[installed: ");
-        package->description = description;
 
-        if (package->installed) {
-            package->installedVersion = pacmanOutput.at(line).split("[installed: ")[1].split("]")[0];
+        if (originAndName.length() > 2) {
+            bool isInstalled = mainInfoLine[0].contains("[installed]");
+            package->installed = isInstalled;
         }
+
+        package->description = description;
 
         if (pacmanOutput[line].contains('(')) {
             package->packageGroup = pacmanOutput[line].split('(')[1].split(")")[0];

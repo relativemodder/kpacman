@@ -18,7 +18,6 @@ public:
     QString packageGroup;
     QString description;
     QString version;
-    QString installedVersion;
 };
 
 #endif // PACMANPACKAGEFROMLIST_H
