@@ -3,6 +3,7 @@
 #include <QQuickStyle>
 #include <QQmlContext>
 #include <IconProvider.h>
+#include <Pacman.h>
 
 int main(int argc, char *argv[])
 {
@@ -19,6 +20,8 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     engine.addImageProvider("icon", new IconProvider());
+
+    Pacman::instance()->loadAllPackages();
 
     QObject::connect(
         &engine,

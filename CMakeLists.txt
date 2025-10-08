@@ -23,6 +23,10 @@ find_package(Qt6 REQUIRED COMPONENTS
     QuickControls2
     Widgets
 )
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 find_package(KF6 REQUIRED COMPONENTS
     Kirigami
     I18n
@@ -73,6 +77,10 @@ target_link_libraries(appKpacman
     PRIVATE Qt6::Quick Qt6::QuickControls2
 )
 target_link_libraries(appKpacman PRIVATE Qt6::Core Qt6::Widgets Qt6::Gui)
+target_link_libraries(appKpacman PRIVATE Qt6::Core)
+target_link_libraries(appKpacman PRIVATE Qt6::Core)
+target_link_libraries(appKpacman PRIVATE Qt6::Core)
+target_link_libraries(appKpacman PRIVATE Qt6::Core)
 
 target_include_directories(appKpacman PUBLIC include/)
 
@@ -82,4 +90,3 @@ install(TARGETS appKpacman
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
-add_subdirectory(kpacmand)
