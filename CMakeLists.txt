@@ -15,6 +15,7 @@ include(KDECMakeSettings)
 include(ECMFindQmlModule)
 include(ECMQmlModule)
 
+find_package(ZLIB REQUIRED)
 find_package(Qt6 REQUIRED COMPONENTS
     Core
     Quick
@@ -23,10 +24,7 @@ find_package(Qt6 REQUIRED COMPONENTS
     QuickControls2
     Widgets
 )
-find_package(Qt6 REQUIRED COMPONENTS Core)
-find_package(Qt6 REQUIRED COMPONENTS Core)
-find_package(Qt6 REQUIRED COMPONENTS Core)
-find_package(Qt6 REQUIRED COMPONENTS Core)
+
 find_package(KF6 REQUIRED COMPONENTS
     Kirigami
     I18n
@@ -76,11 +74,7 @@ qt_add_qml_module(appKpacman
 target_link_libraries(appKpacman
     PRIVATE Qt6::Quick Qt6::QuickControls2
 )
-target_link_libraries(appKpacman PRIVATE Qt6::Core Qt6::Widgets Qt6::Gui)
-target_link_libraries(appKpacman PRIVATE Qt6::Core)
-target_link_libraries(appKpacman PRIVATE Qt6::Core)
-target_link_libraries(appKpacman PRIVATE Qt6::Core)
-target_link_libraries(appKpacman PRIVATE Qt6::Core)
+target_link_libraries(appKpacman PRIVATE Qt6::Core Qt6::Widgets Qt6::Gui ZLIB::ZLIB)
 
 target_include_directories(appKpacman PUBLIC include/)
 

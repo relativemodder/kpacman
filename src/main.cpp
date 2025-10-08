@@ -4,6 +4,7 @@
 #include <QQmlContext>
 #include <IconProvider.h>
 #include <Pacman.h>
+#include <Appstream.h>
 
 int main(int argc, char *argv[])
 {
@@ -22,6 +23,13 @@ int main(int argc, char *argv[])
     engine.addImageProvider("icon", new IconProvider());
 
     Pacman::instance()->loadAllPackages();
+    Appstream::instance()->loadAppstreamData();
+
+    for (auto archPackage : Pacman::instance()->getInstalledPackages()) {
+        auto component = Appstream::instance()->findComponentByPackage(archPackage->name);
+        if (component == nullptr) continue;
+        qDebug() << component->name << ", installed by package " << component->package << ", icon is " << component->icon;
+    }
 
     QObject::connect(
         &engine,

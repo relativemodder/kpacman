@@ -7,17 +7,18 @@
 
 class PacmanPackageFromList : public QObject
 {
-    Q_OBJECT
 public:
     explicit PacmanPackageFromList(QObject *parent = nullptr);
 
 public:
     QString name;
     QString origin;
-    bool installed;
     QString packageGroup;
     QString description;
     QString version;
+
+public:
+    uint installed;
 };
 
 #endif // PACMANPACKAGEFROMLIST_H

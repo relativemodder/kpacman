@@ -2,8 +2,6 @@
 #include <QProcess>
 #include <PacmanPackageFromList.h>
 #include <QStringList>
-#include <exception>
-#include <string>
 
 Pacman::Pacman(QObject *parent)
     : QObject{parent}
@@ -53,10 +51,9 @@ void Pacman::loadAllPackages() {
         package->name = originAndName[1];
         package->version = mainInfoLine[1];
 
-        if (originAndName.length() > 2) {
-            bool isInstalled = mainInfoLine[0].contains("[installed]");
-            package->installed = isInstalled;
-        }
+        bool installedBuffer = pacmanOutput[line].contains("installed");
+
+        package->installed = installedBuffer ? 1 : 0;
 
         package->description = description;
 
@@ -70,4 +67,18 @@ void Pacman::loadAllPackages() {
 
 QList<PacmanPackageFromList*> Pacman::getAllPackages() {
     return allPackages;
+}
+
+
+QList<PacmanPackageFromList*> Pacman::getInstalledPackages() {
+    QList<PacmanPackageFromList*> filtered;
+    int originalLength = allPackages.length();
+
+    for (int index = 0; index < originalLength; index++) {
+        if (allPackages.at(index)->installed == 1) {
+            filtered.push_back(allPackages[index]);
+        }
+    }
+
+    return filtered;
 }

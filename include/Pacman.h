@@ -14,6 +14,8 @@ public:
     static Pacman* instance();
 
     QList<PacmanPackageFromList*> getAllPackages();
+    QList<PacmanPackageFromList*> getInstalledPackages();
+
     void loadAllPackages();
     void resetPackageList();
 signals:
