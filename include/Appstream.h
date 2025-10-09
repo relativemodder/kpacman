@@ -17,7 +17,7 @@ public:
 
 private:
     void parseXmlFile(const QString& filePath);
-
+    void resetComponents();
     QMap<QString, AppstreamComponent*> m_components;
 };
 

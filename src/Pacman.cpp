@@ -7,19 +7,22 @@ Pacman::Pacman(QObject *parent)
     : QObject{parent}
 {}
 
-Pacman* Pacman::instance() {
+Pacman* Pacman::instance()
+{
     static Pacman p;
     return &p;
 }
 
-void Pacman::resetPackageList() {
+void Pacman::resetPackageList()
+{
     for (auto package : allPackages) {
         delete package;
     }
     allPackages.clear();
 }
 
-void Pacman::loadAllPackages() {
+void Pacman::loadAllPackages()
+{
     resetPackageList();
 
     QProcess process;
@@ -65,12 +68,14 @@ void Pacman::loadAllPackages() {
     }
 }
 
-QList<PacmanPackageFromList*> Pacman::getAllPackages() {
+QList<PacmanPackageFromList*> Pacman::getAllPackages()
+{
     return allPackages;
 }
 
 
-QList<PacmanPackageFromList*> Pacman::getInstalledPackages() {
+QList<PacmanPackageFromList*> Pacman::getInstalledPackages()
+{
     QList<PacmanPackageFromList*> filtered;
     int originalLength = allPackages.length();
 

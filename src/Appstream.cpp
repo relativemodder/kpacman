@@ -22,8 +22,17 @@ AppstreamComponent* Appstream::findComponentByPackage(QString packageName)
     return m_components.value(packageName, nullptr);
 }
 
+void Appstream::resetComponents()
+{
+    for (auto componentKey : m_components.keys()) {
+        delete m_components.value(componentKey, nullptr);
+    }
+    m_components.clear();
+}
+
 void Appstream::loadAppstreamData()
 {
+    resetComponents();
     QDir catalogDir("/usr/share/swcatalog/xml/");
 
     if (!catalogDir.exists()) {
